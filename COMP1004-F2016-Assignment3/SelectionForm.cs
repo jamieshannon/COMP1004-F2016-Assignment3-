@@ -12,6 +12,8 @@ namespace COMP1004_F2016_Assignment3
 {
     public partial class SelectionForm : Form
     {
+        public SplashScreen previousForm;
+
         public SelectionForm()
         {
             InitializeComponent();
