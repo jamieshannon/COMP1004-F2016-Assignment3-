@@ -12,9 +12,22 @@ namespace COMP1004_F2016_Assignment3
 {
     public partial class StreamForm : Form
     {
+        Movie movie = Program.movie;
+
         public StreamForm()
         {
             InitializeComponent();
+        }
+
+        private void OKButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void StreamForm_Load(object sender, EventArgs e)
+        {
+            ChargeLabel.Text = "Your credit card has been charged " + movie.GrandTotal.ToString("C2");
+            StreamLabel.Text = movie.Title + " will begin streaming shortly";
         }
     }
 }
