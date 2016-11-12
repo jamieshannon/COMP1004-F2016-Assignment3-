@@ -38,7 +38,6 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.StreamButton = new System.Windows.Forms.Button();
             this.MovieSelectedGroupBox = new System.Windows.Forms.GroupBox();
-            this.MoviePictureBox = new System.Windows.Forms.PictureBox();
             this.CategoryTextBox = new System.Windows.Forms.TextBox();
             this.TitleTextBox = new System.Windows.Forms.TextBox();
             this.CategoryLabel = new System.Windows.Forms.Label();
@@ -56,10 +55,12 @@
             this.SubTotalLabel = new System.Windows.Forms.Label();
             this.CostLabel = new System.Windows.Forms.Label();
             this.BackButton = new System.Windows.Forms.Button();
+            this.PrintDialog = new System.Windows.Forms.PrintDialog();
+            this.MoviePictureBox = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.MovieSelectedGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MoviePictureBox)).BeginInit();
             this.YourOrderGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MoviePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -88,18 +89,21 @@
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             this.printToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.printToolStripMenuItem.Text = "Print";
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // streamToolStripMenuItem
             // 
             this.streamToolStripMenuItem.Name = "streamToolStripMenuItem";
             this.streamToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.streamToolStripMenuItem.Text = "Stream";
+            this.streamToolStripMenuItem.Click += new System.EventHandler(this.StreamButton_Click);
             // 
             // cancelToolStripMenuItem
             // 
             this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
             this.cancelToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.cancelToolStripMenuItem.Text = "Cancel";
+            this.cancelToolStripMenuItem.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -114,6 +118,7 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // CancelButton
             // 
@@ -123,6 +128,7 @@
             this.CancelButton.TabIndex = 1;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // StreamButton
             // 
@@ -132,6 +138,7 @@
             this.StreamButton.TabIndex = 2;
             this.StreamButton.Text = "Stream";
             this.StreamButton.UseVisualStyleBackColor = true;
+            this.StreamButton.Click += new System.EventHandler(this.StreamButton_Click);
             // 
             // MovieSelectedGroupBox
             // 
@@ -146,14 +153,6 @@
             this.MovieSelectedGroupBox.TabIndex = 3;
             this.MovieSelectedGroupBox.TabStop = false;
             this.MovieSelectedGroupBox.Text = "Movie Selected";
-            // 
-            // MoviePictureBox
-            // 
-            this.MoviePictureBox.Location = new System.Drawing.Point(26, 120);
-            this.MoviePictureBox.Name = "MoviePictureBox";
-            this.MoviePictureBox.Size = new System.Drawing.Size(143, 148);
-            this.MoviePictureBox.TabIndex = 4;
-            this.MoviePictureBox.TabStop = false;
             // 
             // CategoryTextBox
             // 
@@ -218,11 +217,13 @@
             this.PurchaseCheckBox.TabIndex = 11;
             this.PurchaseCheckBox.Text = "Purchase";
             this.PurchaseCheckBox.UseVisualStyleBackColor = true;
+            this.PurchaseCheckBox.CheckedChanged += new System.EventHandler(this.PurchaseCheckBox_CheckedChanged);
             // 
             // PurchaseTextBox
             // 
             this.PurchaseTextBox.Location = new System.Drawing.Point(85, 69);
             this.PurchaseTextBox.Name = "PurchaseTextBox";
+            this.PurchaseTextBox.ReadOnly = true;
             this.PurchaseTextBox.Size = new System.Drawing.Size(100, 20);
             this.PurchaseTextBox.TabIndex = 9;
             this.PurchaseTextBox.Visible = false;
@@ -241,6 +242,7 @@
             // 
             this.GrandTotalTextBox.Location = new System.Drawing.Point(85, 174);
             this.GrandTotalTextBox.Name = "GrandTotalTextBox";
+            this.GrandTotalTextBox.ReadOnly = true;
             this.GrandTotalTextBox.Size = new System.Drawing.Size(100, 20);
             this.GrandTotalTextBox.TabIndex = 7;
             // 
@@ -248,6 +250,7 @@
             // 
             this.SalesTaxTextBox.Location = new System.Drawing.Point(85, 139);
             this.SalesTaxTextBox.Name = "SalesTaxTextBox";
+            this.SalesTaxTextBox.ReadOnly = true;
             this.SalesTaxTextBox.Size = new System.Drawing.Size(100, 20);
             this.SalesTaxTextBox.TabIndex = 6;
             // 
@@ -255,6 +258,7 @@
             // 
             this.SubTotalTextBox.Location = new System.Drawing.Point(85, 104);
             this.SubTotalTextBox.Name = "SubTotalTextBox";
+            this.SubTotalTextBox.ReadOnly = true;
             this.SubTotalTextBox.Size = new System.Drawing.Size(100, 20);
             this.SubTotalTextBox.TabIndex = 5;
             // 
@@ -262,6 +266,7 @@
             // 
             this.CostTextBox.Location = new System.Drawing.Point(85, 34);
             this.CostTextBox.Name = "CostTextBox";
+            this.CostTextBox.ReadOnly = true;
             this.CostTextBox.Size = new System.Drawing.Size(100, 20);
             this.CostTextBox.TabIndex = 4;
             // 
@@ -309,6 +314,20 @@
             this.BackButton.TabIndex = 5;
             this.BackButton.Text = "Back";
             this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            // 
+            // PrintDialog
+            // 
+            this.PrintDialog.UseEXDialog = true;
+            // 
+            // MoviePictureBox
+            // 
+            this.MoviePictureBox.Location = new System.Drawing.Point(26, 120);
+            this.MoviePictureBox.Name = "MoviePictureBox";
+            this.MoviePictureBox.Size = new System.Drawing.Size(143, 148);
+            this.MoviePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.MoviePictureBox.TabIndex = 4;
+            this.MoviePictureBox.TabStop = false;
             // 
             // OrderForm
             // 
@@ -329,13 +348,14 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Movie Bonanza - Confirm Order";
+            this.Load += new System.EventHandler(this.OrderForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.MovieSelectedGroupBox.ResumeLayout(false);
             this.MovieSelectedGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MoviePictureBox)).EndInit();
             this.YourOrderGroupBox.ResumeLayout(false);
             this.YourOrderGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MoviePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -371,5 +391,6 @@
         private System.Windows.Forms.Label SubTotalLabel;
         private System.Windows.Forms.Label CostLabel;
         private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.PrintDialog PrintDialog;
     }
 }

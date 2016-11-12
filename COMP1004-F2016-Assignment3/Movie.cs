@@ -18,7 +18,12 @@ namespace COMP1004_F2016_Assignment3
             get; set;
         }
 
-        public String Price
+        public double Price
+        {
+            get; set;
+        }
+
+        public double GrandTotal
         {
             get; set;
         }
