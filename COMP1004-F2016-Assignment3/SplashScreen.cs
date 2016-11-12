@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * App Name: Movie Bonanza
+ * Name: Jamie Shannon
+ * StudentID: 200328763
+ * Date: Nov. 11/16
+ * Description: Multi-form application that allows the user to select a movie from a list.
+ * Calculates the cost of the movie and notifies that user when the movie is going to stream.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +26,11 @@ namespace COMP1004_F2016_Assignment3
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Hide the splash screen and display the next form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SplashFormTimer_Tick(object sender, EventArgs e)
         {
             //hide the splash form
@@ -24,8 +38,6 @@ namespace COMP1004_F2016_Assignment3
 
             //create an object for the next form
             SelectionForm selectionForm = new SelectionForm();
-
-            //add property in next form to point to this form
 
             //point this form to the parent form
             selectionForm.previousForm = this;

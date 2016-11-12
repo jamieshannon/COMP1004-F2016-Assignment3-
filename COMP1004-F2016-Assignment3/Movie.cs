@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * App Name: Movie Bonanza
+ * Name: Jamie Shannon
+ * StudentID: 200328763
+ * Date: Nov. 11/16
+ * Description: Multi-form application that allows the user to select a movie from a list.
+ * Calculates the cost of the movie and notifies that user when the movie is going to stream.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

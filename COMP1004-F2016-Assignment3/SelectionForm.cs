@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * App Name: Movie Bonanza
+ * Name: Jamie Shannon
+ * StudentID: 200328763
+ * Date: Nov. 11/16
+ * Description: Multi-form application that allows the user to select a movie from a list.
+ * Calculates the cost of the movie and notifies that user when the movie is going to stream.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,10 +31,16 @@ namespace COMP1004_F2016_Assignment3
         Movie movie = Program.movie;
 
 
+        /// <summary>
+        /// Display the movie information and image when the selection is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MovieListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             TitleTextBox.Text = MovieListBox.SelectedItem.ToString();
 
+            // determine which movie is selected to display the appropriate information and image
             if (TitleTextBox.Text == "Season of the Witch" || TitleTextBox.Text == "I am Number Four")
             {
                 CategoryTextBox.Text = "Sci-Fi";
@@ -169,6 +184,8 @@ namespace COMP1004_F2016_Assignment3
             }
 
             String[] UserSelection = { TitleTextBox.Text, CategoryTextBox.Text, CostTextBox.Text };
+
+            // enable next button once a selection has been made
             NextButton.Enabled = true;
 
             SetMovie();
@@ -184,6 +201,11 @@ namespace COMP1004_F2016_Assignment3
             
         }
 
+        /// <summary>
+        /// Open the next form when the next button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NextButton_Click(object sender, EventArgs e)
         {
             //Instantiate a new OrderForm object 

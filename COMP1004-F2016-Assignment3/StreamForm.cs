@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * App Name: Movie Bonanza
+ * Name: Jamie Shannon
+ * StudentID: 200328763
+ * Date: Nov. 11/16
+ * Description: Multi-form application that allows the user to select a movie from a list.
+ * Calculates the cost of the movie and notifies that user when the movie is going to stream.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,11 +28,21 @@ namespace COMP1004_F2016_Assignment3
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Close the application when the OK button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OKButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// Set the labels to reflect the movie selected and the appropriate cost
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StreamForm_Load(object sender, EventArgs e)
         {
             ChargeLabel.Text = "Your credit card has been charged " + movie.GrandTotal.ToString("C2");
