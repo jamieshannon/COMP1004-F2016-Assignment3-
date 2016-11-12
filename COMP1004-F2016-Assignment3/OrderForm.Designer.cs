@@ -327,6 +327,7 @@
             this.MinimizeBox = false;
             this.Name = "OrderForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Movie Bonanza - Confirm Order";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

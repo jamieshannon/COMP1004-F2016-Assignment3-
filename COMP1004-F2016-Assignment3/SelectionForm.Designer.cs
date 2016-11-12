@@ -72,6 +72,7 @@
             this.MovieListBox.Size = new System.Drawing.Size(120, 173);
             this.MovieListBox.Sorted = true;
             this.MovieListBox.TabIndex = 0;
+            this.MovieListBox.SelectedIndexChanged += new System.EventHandler(this.MovieListBox_SelectedIndexChanged);
             // 
             // SelectionGroupBox
             // 
@@ -91,9 +92,11 @@
             // 
             // MoviePictureBox
             // 
+            this.MoviePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.MoviePictureBox.Location = new System.Drawing.Point(230, 28);
             this.MoviePictureBox.Name = "MoviePictureBox";
             this.MoviePictureBox.Size = new System.Drawing.Size(110, 127);
+            this.MoviePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.MoviePictureBox.TabIndex = 6;
             this.MoviePictureBox.TabStop = false;
             // 
@@ -101,6 +104,7 @@
             // 
             this.CostTextBox.Location = new System.Drawing.Point(83, 103);
             this.CostTextBox.Name = "CostTextBox";
+            this.CostTextBox.ReadOnly = true;
             this.CostTextBox.Size = new System.Drawing.Size(100, 20);
             this.CostTextBox.TabIndex = 5;
             // 
@@ -108,6 +112,7 @@
             // 
             this.CategoryTextBox.Location = new System.Drawing.Point(83, 75);
             this.CategoryTextBox.Name = "CategoryTextBox";
+            this.CategoryTextBox.ReadOnly = true;
             this.CategoryTextBox.Size = new System.Drawing.Size(100, 20);
             this.CategoryTextBox.TabIndex = 4;
             // 
@@ -133,6 +138,7 @@
             // 
             this.TitleTextBox.Location = new System.Drawing.Point(83, 48);
             this.TitleTextBox.Name = "TitleTextBox";
+            this.TitleTextBox.ReadOnly = true;
             this.TitleTextBox.Size = new System.Drawing.Size(100, 20);
             this.TitleTextBox.TabIndex = 1;
             // 
@@ -154,6 +160,7 @@
             this.NextButton.TabIndex = 2;
             this.NextButton.Text = "Next";
             this.NextButton.UseVisualStyleBackColor = true;
+            this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
             // OptionLabel
             // 
@@ -177,6 +184,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SelectionForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Movie Bonanza - Select Movie";
             this.SelectionGroupBox.ResumeLayout(false);
             this.SelectionGroupBox.PerformLayout();
